@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@theme {
+  /* A. WARNA (COLORS)   */
+  --color-heading: #414141;
+  --color-span-heading: #484848;
+  --color-subheading: #707070;
+  --color-span-subheading: #343434;
+  --color-desc: #868686;
+  --color-product: #494949;
+  --color-title-product-span: #252525;
+  --color-featured: #373737;
+  --color-featured-desc: #898989;
+  --color-surface: #000000;
+  --color-border-input: #c7c7c7;
+  --color-border-hero: #adadad;
+  --color-menu: #303030;
+  --color-checkbox: #c1c1c1;
+  --color-filter: #272727;
+  --color-filterb: #c8c8c8;
+  --color-size: #656565;
+  --color-borders: #ebebeb;
+  --color-detail-product: #555555;
+  --color-tabs: #393939;
+  --color-checkout-price: #454545;
+  --color-about: #6d6d6d;
+  --color-card-heading-about: #2a2a2a;
+  --color-contact-h: #4e4e4e;
+  --color-form: #3c3c3c;
+  /* B. TIPOGRAFI (TYPOGRAPHY) */
+
+  /* Font Family */
+  --font-primary: "Outfit", sans-serif;
+  --font-secondary: "Prata", serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-primary);
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
