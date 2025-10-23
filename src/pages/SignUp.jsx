@@ -57,11 +57,14 @@ const SignUp = () => {
         />
 
         {error && <p className="text-red-500">{error}</p>}
-        <div className="w-[50%] flex justify-between mt-[-20px]">
-          <p className="text-base font-normal text-form">
+        <div className="w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[30%] flex justify-between mt-[-20px]">
+          <p className="text-sm sm:text-base font-normal text-form">
             Already Have an Account ?
           </p>
-          <Link to={"/login"} className="text-base font-normal text-form">
+          <Link
+            to={"/login"}
+            className="text-sm sm:text-base font-normal text-form hover:text-black"
+          >
             Sign In
           </Link>
         </div>
