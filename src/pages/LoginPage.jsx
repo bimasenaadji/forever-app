@@ -51,11 +51,14 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && <p className="text-red-500">{error}</p>}
-        <div className="w-[50%] flex justify-between mt-[-20px]">
-          <p className="text-base font-normal text-form">
+        <div className="w-[80%] sm:w-[70%] md:w-[60%] flex justify-between mt-[-20px]">
+          <p className="text-sm sm:text-base font-normal text-form">
             Forgot your password?
           </p>
-          <Link to={"/sign-up"} className="text-base font-normal text-form">
+          <Link
+            to={"/sign-up"}
+            className="text-sm sm:text-base font-normal text-form"
+          >
             Create Account
           </Link>
         </div>
