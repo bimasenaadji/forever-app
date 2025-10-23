@@ -16,7 +16,7 @@ const ProductsCollection = ({ maxItems, productData }) => {
         industry. Lorem Ipsum has been the.
       </ProductDescription>
       <ProductsGridCollection
-        className={"grid-cols-2"}
+        className={"grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"}
         maxItems={maxItems}
         productData={productData}
       />
