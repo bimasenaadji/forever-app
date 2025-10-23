@@ -11,7 +11,7 @@ const ContactUs = () => {
         word2={"Us"}
         className={"justify-center mb-6"}
       />
-      <div className="grid grid-cols-2 place-items-center mb-20">
+      <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 place-items-center mb-20">
         <img src={contactImage} alt="Contact Us" />
         <div className="flex flex-col gap-y-5">
           <h4 className="font-semibold text-[26px] text-contact-h">
