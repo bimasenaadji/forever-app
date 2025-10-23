@@ -2,7 +2,7 @@ import React from "react";
 
 const FormInput = ({ type, placeholder, value, onChange }) => {
   return (
-    <div className="w-[80%] sm:w-[70%] md:w-[60%]">
+    <div className="w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[30%]">
       <input
         className="w-full font-normal text-base sm:text-lg border border-black px-4 py-3"
         type={type}
