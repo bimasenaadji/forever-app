@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormTitle from "../components/ui/FormTitle";
 import FormInput from "../components/ui/FormInput";
 import ButtonForm from "../components/ui/ButtonForm";
@@ -13,9 +13,15 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const { login, loading } = useAuth();
+  const { login, loading, isLoggedIn } = useAuth();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();

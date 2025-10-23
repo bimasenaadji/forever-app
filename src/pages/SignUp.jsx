@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormTitle from "../components/ui/FormTitle";
 import FormInput from "../components/ui/FormInput";
 import SubscribeForm from "../components/ui/SubscribeForm";
@@ -6,6 +6,7 @@ import ButtonForm from "../components/ui/ButtonForm";
 import { Link, useNavigate } from "react-router";
 import { registerUser } from "../../services/auth.service";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/authContext";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -15,12 +16,20 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const { isLoggedIn } = useAuth();
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    useEffect(() => {
+      if (isLoggedIn) {
+        navigate("/");
+      }
+    }, [isLoggedIn, navigate]);
 
     try {
       await registerUser(name, email, password);
