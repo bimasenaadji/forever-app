@@ -80,7 +80,9 @@ const CollectionPage = () => {
       <main className="flex flex-col gap-y-6">
         <CollectionTitle onSortChange={handleSortChange} activeSort={sort} />
         <ProductsGridCollection
-          className={"grid-cols-3"}
+          className={
+            "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
+          }
           productData={productsData}
         />
       </main>
