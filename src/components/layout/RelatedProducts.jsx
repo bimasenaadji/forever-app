@@ -2,7 +2,7 @@ import React from "react";
 import ProductTitle from "../ui/ProductTitle";
 import ProductsGridCollection from "./ProductsGridCollection";
 
-const RelatedProducts = ({ products }) => {
+const RelatedProducts = ({ products, maxItems }) => {
   return (
     <div>
       <ProductTitle
@@ -11,8 +11,8 @@ const RelatedProducts = ({ products }) => {
         className={"justify-center"}
       />
       <ProductsGridCollection
+        className={"grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"}
         productData={products}
-        className={"lg:grid-rows-1"}
         maxItems={5}
       />
     </div>
