@@ -7,7 +7,7 @@ const AboutUs = () => {
   return (
     <div className="p-10">
       <ProductTitle word1={"About"} word2={"Us"} />
-      <div className="grid  grid-cols-2 gap-x-12 place-items-center mb-7">
+      <div className="grid grid-cols-1 gap-y-8  lg:grid-cols-2 gap-x-12 place-items-center mb-7">
         <img className="" src={aboutImg} alt="About Us" />
         <div>
           <AbousDescription>
@@ -36,7 +36,7 @@ const AboutUs = () => {
         </div>
       </div>
       <ProductTitle word1={"Why"} word2={"Choose Us"} />
-      <div className="grid grid-cols-3 place-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 place-items-center">
         <AboutCard title={"Quality Assurance:"}>
           We meticulously select and vet each product to ensure it meets our
           stringent quality standards.
@@ -58,7 +58,7 @@ const AboutUs = () => {
 const AbousDescription = ({ children }) => {
   return (
     <>
-      <p className="font-normal text-lg text-about ">{children}</p> 
+      <p className="font-normal text-lg text-about ">{children}</p>
     </>
   );
 };
