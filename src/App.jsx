@@ -9,6 +9,7 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import LoginPage from "./pages/LoginPage";
 import SignUp from "./pages/SignUp";
+import NotFoundPage from "./pages/NotFoundPage";
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
