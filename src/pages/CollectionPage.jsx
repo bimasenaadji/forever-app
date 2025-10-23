@@ -5,13 +5,16 @@ import ProductsGridCollection from "../components/layout/ProductsGridCollection"
 import { fetchAllProducts } from "../../services/product.service";
 import { useEffect, useState } from "react";
 import ProductCardSkeleton from "../components/ui/ProductCardSkeleton";
+import Pagination from "../components/ui/Pagination";
 
 const CollectionPage = () => {
   const [productsData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({ category: "", type: "" });
   const [sort, setSort] = useState("createdAt_desc");
-  const [page, setPage] = useState(1);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const loadData = async () => {
@@ -20,16 +23,16 @@ const CollectionPage = () => {
       const params = {
         ...filters,
         sort: sort,
-        page: page,
+        page: currentPage,
       };
 
       const data = await fetchAllProducts(params);
       setProductsData(data);
-      setPage(data.totalPages);
+      setTotalPages(data.totalPages);
       setLoading(false);
     };
     loadData();
-  }, [filters, sort, page]);
+  }, [filters, sort, currentPage]);
 
   const handleFilterChange = (filterType, value) => {
     setFilters((prevFilters) => {
@@ -48,12 +51,16 @@ const CollectionPage = () => {
         };
       }
     });
-    setPage(1);
+    setCurrentPage(1);
   };
 
   const handleSortChange = (newSortValue) => {
     setSort(newSortValue);
-    setPage(1);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
   };
 
   if (loading) {
@@ -84,6 +91,11 @@ const CollectionPage = () => {
             "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
           }
           productData={productsData}
+        />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
         />
       </main>
     </section>
