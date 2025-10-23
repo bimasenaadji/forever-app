@@ -4,7 +4,9 @@ import SorterBox from "../ui/SorterBox";
 
 const CollectionTitle = ({ className, onSortChange, activeSort }) => {
   return (
-    <div className={`flex justify-between items-center ${className} h-min`}>
+    <div
+      className={`flex justify-between items-center flex-col sm:flex-row ${className} h-min`}
+    >
       <ProductTitle
         className={"justify-start"}
         word1={"All"}
