@@ -1,6 +1,4 @@
-import React from "react";
 import { useParams } from "react-router";
-import { products } from "../data/products";
 import ProductDetailCard from "../components/layout/ProductDetailCard";
 import ProductTabs from "../components/layout/ProductTabs";
 import RelatedProducts from "../components/layout/RelatedProducts";
