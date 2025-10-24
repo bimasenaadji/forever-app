@@ -23,7 +23,7 @@ const CartPage = () => {
     );
   }
   return (
-    <div className="p-10 grid gap-y-5">
+    <div className="p-3 sm:p-10 grid gap-y-5">
       <ProductTitle word1={"Your"} word2={"Cart"} className={"justify-start"} />
 
       <ProductCart cart={cart} />
