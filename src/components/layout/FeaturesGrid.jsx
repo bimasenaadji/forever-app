@@ -6,7 +6,7 @@ import SupportIcon from "../icons/SupportIcon";
 
 const FeaturesGrid = () => {
   return (
-    <div className="grid grid-cols-1 grid-rows-3 gap-y-32 place-items-center my-28 lg:grid-cols-3 lg:grid-rows-1">
+    <div className="grid grid-cols-1 grid-rows-3 gap-y-32 place-items-center my-28 md:grid-cols-3 md:grid-rows-1 md:p-10 mx-auto">
       <Features
         heading={"Easy Exchange Policy"}
         subheading={"We offer hassle free  exchange policy"}
