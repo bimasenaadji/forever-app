@@ -2,6 +2,7 @@ import BinIcon from "../icons/BinIcon";
 import CartTotal from "./CartTotal";
 import InputCounter from "./InputCounter";
 import { useCart } from "../../../context/cartContext";
+import { formatRupiah } from "../../../utils/formatCurrency";
 
 const ProductCart = ({ cart }) => {
   const { removeItem, updateQuantity } = useCart();
@@ -12,22 +13,22 @@ const ProductCart = ({ cart }) => {
           item.product && (
             <article key={item.product._id}>
               <div className="h-[1px] w-full bg-gray-300 lg:col-span-3 my-2"></div>
-              <div className="flex gap-x-6 items-center ">
-                <div className="flex flex-1 items-center gap-x-5">
+              <div className="flex gap-x-2 sm:gap-x-3 items-center ">
+                <div className="flex flex-1 items-center gap-x-2 sm:gap-x-5">
                   <img
                     src={item.product.imageUrl}
                     alt={item.product.name}
                     className="w-20 h-20 object-cover"
                   />
                   <div className="flex flex-col gap-y-2">
-                    <p className="font-medium text-[22px]">
+                    <p className="font-medium test-base sm:text-[22px]">
                       {item.product.name}
                     </p>
                     <div className="flex items-center gap-x-7">
-                      <p className="font-light text-[28px] text-desc">
-                        {item.product.price}
+                      <p className="font-light text-base sm:text-[28px] text-desc">
+                        {formatRupiah(item.product.price)}
                       </p>
-                      <p className="w-[50px] h-[50px] text-center ...">
+                      <p className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] text-center text-sm lg:text-base border leading-[40px] sm:leading-[50px] border-border-input">
                         {item.size}
                       </p>
                     </div>
@@ -35,7 +36,6 @@ const ProductCart = ({ cart }) => {
                 </div>
 
                 <InputCounter
-                  // Kirim nilai awal dan fungsi 'onChange'
                   initialValue={item.quantity}
                   onChange={(newQuantity) =>
                     updateQuantity(item.product._id, newQuantity, item.size)
