@@ -7,14 +7,18 @@ import { useState } from "react";
 import { useAuth } from "../../../context/authContext";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
+import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { logout } = useAuth();
 
   const toggleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const handleLogout = () => {
     logout();
@@ -22,11 +26,11 @@ const Header = () => {
     toast.success("Logged out successfully.");
   };
   return (
-    <div className="relative flex justify-between items-center p-10">
+    <div className="p-6 sm:p-10 relative flex justify-between items-center ">
       <LogoIcons />
-      <Navbar />
+      <Navbar className={"hidden"} />
       <HeaderActions onProfileClick={toggleDropDown} />
-      <HamburgerMenu />
+      <HamburgerMenu onClick={toggleMobileMenu} />
       {isDropDownOpen && (
         <div className="absolute right-0 top-20 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
           <Link
@@ -49,6 +53,10 @@ const Header = () => {
           </button>
         </div>
       )}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
     </div>
   );
 };
