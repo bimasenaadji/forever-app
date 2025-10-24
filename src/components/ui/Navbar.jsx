@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 import { useAuth } from "../../../context/authContext";
 
 const navLinks = [
@@ -29,14 +29,26 @@ const Navbar = ({ className }) => {
           </li>
         ))}
         <li>
-          <Link
+          <NavLink
             to={"/login"}
-            className={`${
-              isLoggedIn ? "hidden" : "block"
-            } p-4  text-white bg-black lg:hidden`}
+            className={({ isActive }) => {
+              const classes = [];
+
+              if (isLoggedIn) {
+                classes.push("hidden");
+              } else {
+                classes.push("");
+              }
+
+              if (isActive) {
+                classes.push(activeLinkClass);
+              }
+
+              return classes.join(" ");
+            }}
           >
             Login
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
