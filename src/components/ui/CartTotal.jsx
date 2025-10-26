@@ -2,12 +2,13 @@ import React from "react";
 import ProductTitle from "./ProductTitle";
 import { useCart } from "../../../context/cartContext";
 import { formatRupiah } from "../../../utils/formatCurrency";
+import CartButton from "./CartButton";
 
-const CartTotal = ({ className }) => {
+const CartTotal = ({ className, children, title }) => {
   const { subtotal, shipping, total } = useCart();
   return (
-    <div className={`flex flex-col w-full sm:w-[50%] ${className}`}>
-      <ProductTitle word1={"Cart"} word2={"Totals"} />
+    <div className={`flex flex-col w-full sm:w-full md:w-[60%] ${className}`}>
+      <ProductTitle word1={"Cart"} word2={"Totals"} className={title} />
 
       <div className="flex justify-between">
         <p className="text-detail-product font-semibold text-base">Subtotal</p>
@@ -34,10 +35,7 @@ const CartTotal = ({ className }) => {
           {formatRupiah(total)}
         </p>
       </div>
-
-      <button className="uppercase py-6 px-10 lg:px-28 font-semibold text-base bg-black text-white my-5">
-        Proceed to checkout
-      </button>
+      {children}
     </div>
   );
 };
