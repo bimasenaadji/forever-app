@@ -3,6 +3,8 @@ import CartTotal from "./CartTotal";
 import InputCounter from "./InputCounter";
 import { useCart } from "../../../context/cartContext";
 import { formatRupiah } from "../../../utils/formatCurrency";
+import CartButton from "./CartButton";
+import { Link } from "react-router";
 
 const ProductCart = ({ data }) => {
   const { removeItem, updateQuantity } = useCart();
@@ -49,8 +51,11 @@ const ProductCart = ({ data }) => {
             </article>
           )
       )}
-
-      <CartTotal className={"place-self-end"} />
+      <CartTotal className={"place-self-end"}>
+        <Link to={"/checkout"}>
+          <CartButton>Proceed to Checkout</CartButton>
+        </Link>
+      </CartTotal>
     </div>
   );
 };
