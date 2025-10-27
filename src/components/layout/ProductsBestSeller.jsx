@@ -18,7 +18,7 @@ const ProductsBestSeller = ({ maxItems, productData }) => {
       <ProductsGridBestSeller
         maxItems={maxItems}
         productData={productData}
-        className={"grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"}
+        className={"grid-cols-2 md:grid-cols-3 lg:grid-cols-5"}
       />
     </section>
   );

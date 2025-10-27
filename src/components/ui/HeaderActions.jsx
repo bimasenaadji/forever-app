@@ -17,7 +17,7 @@ const HeaderActions = ({ onProfileClick }) => {
       <SearchIcon />
 
       {isLoggedIn && (
-        <button onClick={onProfileClick}>
+        <button onClick={onProfileClick} className="cursor-pointer">
           <ProfileIcon />
         </button>
       )}
