@@ -4,11 +4,11 @@ import InputCounter from "./InputCounter";
 import { useCart } from "../../../context/cartContext";
 import { formatRupiah } from "../../../utils/formatCurrency";
 
-const ProductCart = ({ cart }) => {
+const ProductCart = ({ data }) => {
   const { removeItem, updateQuantity } = useCart();
   return (
     <div className="grid grid-cols-1 grid-flow-row gap-y-3">
-      {cart.items.map(
+      {data.items.map(
         (item) =>
           item.product && (
             <article key={item.product._id}>
