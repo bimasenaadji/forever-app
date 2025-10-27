@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductTitle from "../components/ui/ProductTitle";
 import ProductOrder from "../components/ui/ProductOrder";
 import { getOrder } from "../../services/order.service";
+import OrderSkeleton from "../components/ui/OrderSkeleton";
 
 const OrdersPage = () => {
   const [order, setOrder] = useState(null);
@@ -24,7 +25,7 @@ const OrdersPage = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <OrderSkeleton />;
   }
   return (
     <div className="p-5">
@@ -33,7 +34,7 @@ const OrdersPage = () => {
         word2={"Orders"}
         className={"justify-center sm:justify-start"}
       />
-      <ProductOrder data={order} />
+      <ProductOrder orders={order} />
     </div>
   );
 };
