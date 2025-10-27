@@ -28,24 +28,10 @@ const Navbar = ({ className }) => {
             </NavLink>
           </li>
         ))}
-        <li>
+        <li className={isLoggedIn ? "hidden" : ""}>
           <NavLink
             to={"/login"}
-            className={({ isActive }) => {
-              const classes = [];
-
-              if (isLoggedIn) {
-                classes.push("hidden");
-              } else {
-                classes.push("");
-              }
-
-              if (isActive) {
-                classes.push(activeLinkClass);
-              }
-
-              return classes.join(" ");
-            }}
+            className={({ isActive }) => (isActive ? activeLinkClass : "")}
           >
             Login
           </NavLink>
