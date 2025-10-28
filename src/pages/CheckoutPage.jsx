@@ -12,18 +12,28 @@ import toast from "react-hot-toast";
 import { useCart } from "../../context/cartContext";
 
 const CheckoutPage = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [country, setCountry] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [selectedPayment, setSelectedPayment] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    country: "",
+    phoneNumber: "",
+    paymentMethod: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const navigate = useNavigate();
 
@@ -35,20 +45,20 @@ const CheckoutPage = () => {
     setError(null);
     try {
       const shippingAddressData = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        addressLine1: address,
-        city: city,
-        state: state,
-        zipCode: zipCode,
-        country: country,
-        phone: phoneNumber,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        addressLine1: formData.address,
+        city: formData.city,
+        state: formData.state,
+        zipCode: formData.zipCode,
+        country: formData.country,
+        phone: formData.phoneNumber,
       };
 
       const orderData = {
         shippingAddress: shippingAddressData,
-        paymentMethod: selectedPayment,
+        paymentMethod: formData.paymentMethod,
       };
 
       await createOrder(orderData);
@@ -78,50 +88,59 @@ const CheckoutPage = () => {
         />
         <div className="grid grid-flow-row gap-y-7 place-items-center sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-2 ">
           <InputCheckout
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
             placeholder={"First Name"}
           />
           <InputCheckout
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
             placeholder={"Last Name"}
           />
           <InputCheckout
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder={"Email Address"}
             className={"lg:col-span-2"}
           />
           <InputCheckout
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
             placeholder={"Address"}
             className={"lg:col-span-2"}
           />
           <InputCheckout
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
             placeholder={"City"}
           />
           <InputCheckout
-            value={state}
-            onChange={(e) => setState(e.target.value)}
+            name="state"
+            value={formData.state}
+            onChange={handleChange}
             placeholder={"State"}
           />
           <InputCheckout
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
+            name="zipCode"
+            value={formData.zipCode}
+            onChange={handleChange}
             placeholder={"Zip Code"}
           />
           <InputCheckout
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
             placeholder={"Country"}
           />
           <InputCheckout
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
             placeholder={"Phone Number"}
             className={"sm:col-span-2 "}
           />
@@ -136,21 +155,21 @@ const CheckoutPage = () => {
             imageUrl={imageUrl1}
             name={"paymentMethod"}
             value={"stripe"}
-            checked={selectedPayment === "stripe"}
-            onChange={(e) => setSelectedPayment(e.target.value)}
+            checked={formData.paymentMethod === "stripe"}
+            onChange={handleChange}
           />
           <PaymentOption
             imageUrl={imageUrl2}
             name={"paymentMethod"}
             value={"razorpay"}
-            checked={selectedPayment === "razorpay"}
-            onChange={(e) => setSelectedPayment(e.target.value)}
+            checked={formData.paymentMethod === "razorpay"}
+            onChange={handleChange}
           />
           <PaymentOption
             name={"paymentMethod"}
             value={"cod"}
-            checked={selectedPayment === "cod"}
-            onChange={(e) => setSelectedPayment(e.target.value)}
+            checked={formData.paymentMethod === "cod"}
+            onChange={handleChange}
           >
             COD
           </PaymentOption>

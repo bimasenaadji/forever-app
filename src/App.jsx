@@ -13,6 +13,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { Toaster } from "react-hot-toast";
 import OrdersPage from "./pages/OrdersPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
