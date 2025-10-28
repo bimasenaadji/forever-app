@@ -19,17 +19,16 @@ const SignUp = () => {
   const { isLoggedIn } = useAuth();
 
   const navigate = useNavigate();
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
-    useEffect(() => {
-      if (isLoggedIn) {
-        navigate("/");
-      }
-    }, [isLoggedIn, navigate]);
 
     try {
       await registerUser(name, email, password);
