@@ -21,8 +21,8 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("authToken", data.token); // 1. Di localStorage (agar tidak hilang saat refresh)
       setToken(data.token); // 2. Di state (agar UI langsung update)
 
-      // (Opsional) Simpan data user jika ada
-      // setUser(data.user);
+      // data user jika ada
+      setUser(data.user);
 
       setLoading(false);
       toast.success("Login successful!"); // <-- TAMBAHKAN TOAST SUKSES DI SINI
@@ -49,6 +49,7 @@ export const AuthProvider = ({ children }) => {
     loading,
     login,
     logout,
+    setUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
